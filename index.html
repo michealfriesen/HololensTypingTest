@@ -33,17 +33,9 @@
             float: right;
         }
 
-/* <!-- 
-        body {
-            color: #8f8f8f;
-            background: white;
-            font-weight: 300;
-            -webkit-font-smoothing: antialiased;
-        } --> */
         .content {
             padding: 50px 2% 250px;
         }
-
 
         .mouse {
             display: block;
@@ -130,7 +122,7 @@
                     </ul>
                 </nav>
             </div>
-            
+
         </div> <!-- / row -->
 
     </header>
@@ -232,6 +224,26 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Results</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This is where all the results will be stored.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Complete Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -252,7 +264,7 @@
         // Sticky Header
         $(window).scroll(function () {
 
-            if ($(window).scrollTop() > 100) {
+            if ($(window).scrollTop() > 0) {
                 $('.main_h').addClass('sticky');
             } else {
                 $('.main_h').removeClass('sticky');
@@ -304,6 +316,7 @@
 
                 $('#mainInput').prop('disabled', true);
                 // TODO: This should pull up the report of results.
+                $('#resultsModal').modal('show');
             }, testLength * 1000)
         }
 
