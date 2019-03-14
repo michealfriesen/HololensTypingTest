@@ -78,14 +78,32 @@
     <script>
         function startTest() {
             
-            let testLength = $('#testLength').val()
+            let testLength = $('#testLength').val() * 60
+            let timeRemaining = testLength;
+            setInterval(()=>{
+
+                if(timeRemaining > 0) {
+
+                    timeRemaining = timeRemaining - 1;
+                    $('#timeRemaining').html('Time Remaining: ' + timeRemaining)
+                }
+            }, 1000)
             setTimeout(()=>{
 
                 $('#mainInput').prop('disabled', true);
                 // TODO: This should pull up the report of results.
-            }, testLength * 10000)
+            }, testLength * 1000)
         }
 
-        startTest()
+        let testRunning = false;
+        $("#mainInput").on("input", function(){
+        
+            
+            if( !testRunning ) {
+
+                testRunning = true;
+                startTest()
+            }
+        });
     </script>
 </body>
