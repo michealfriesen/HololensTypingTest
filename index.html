@@ -1,7 +1,140 @@
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+
+    <style>
+        .main_h {
+            position: fixed;
+            top: 0px;
+            max-height: 70px;
+            z-index: 999;
+            width: 100%;
+            padding-top: 17px;
+            background: none;
+            overflow: hidden;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            opacity: 0;
+            top: -100px;
+            padding-bottom: 6px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .sticky {
+            background-color: rgba(255, 255, 255, 0.93);
+            opacity: 1;
+            top: 0px;
+            border-bottom: 1px solid gainsboro;
+        }
+        nav ul {
+            list-style: none;
+            overflow: hidden;
+            text-align: right;
+            float: right;
+        }
+
+/* <!-- 
+        body {
+            color: #8f8f8f;
+            background: white;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        } --> */
+        .content {
+            padding: 50px 2% 250px;
+        }
+
+
+        .mouse {
+            display: block;
+            margin: 0 auto;
+            width: 26px;
+            height: 46px;
+            border-radius: 13px;
+            border: 2px solid #e8f380;
+            position: absolute;
+            bottom: 40px;
+            position: absolute;
+            left: 50%;
+            margin-left: -26px;
+        }
+
+        .mouse span {
+            display: block;
+            margin: 6px auto;
+            width: 2px;
+            height: 2px;
+            border-radius: 4px;
+            background: #e8f380;
+            border: 1px solid transparent;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-name: scroll;
+            animation-name: scroll;
+        }
+
+        @-webkit-keyframes scroll {
+            0% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translateY(20px);
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translateY(20px);
+                -ms-transform: translateY(20px);
+                transform: translateY(20px);
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+    <header class="main_h">
+
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-3 text-center">
+
+                <h4 class="logo">Typing Test</a>
+            </div>
+
+            <div class="col-sm-4">
+
+                <nav>
+                    <ul>
+                        <li id="timeRemaining">Time Remaining: 60</li>
+                    </ul>
+                </nav>
+            </div>
+            
+        </div> <!-- / row -->
+
+    </header>
+
 
     <div class="container centered">
         <!-- Header -->
@@ -14,6 +147,7 @@
 
         <!-- Options Div -->
         <div class="row" style="padding-top:5%">
+            <div class="col-sm-2"></div>
             <div class="col-sm-4">
                 <h5>
                     Minutes allotted
@@ -36,59 +170,137 @@
             </div>
         </div>
 
-        <!-- Timer Div -->
-        <div class="row" style="padding-top:5%">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <h3 id="timeRemaining">Time Remaining: 60</h3>
-            </div>
-            
-            
-        </div>
-
         <!-- Text to Write-->
         <div class="row" style="padding-top:5%">
-                <h3 class="col-sm-5">Please type the text below:</h3>
-                <div class="col-sm-2"></div>
-                <h3 class="col-sm-5">Text to input:</h3>
-                <p class="col-sm-5 text-justify">
-                    One night, all the animals at Mr. Jones' Manor Farm assemble in a barn to hear old Major, a pig, describe a dream he had about a world where all animals live free from the tyranny of their human masters. Old Major dies soon after the meeting, but the animals, now inspired by his philosophy of Animalism, plot a rebellion against Jones. Two pigs, Snowball and Napoleon, prove themselves important figures and planners of this dangerous enterprise. When Jones forgets to feed the animals, the revolution occurs, and Jones and his men are chased off the farm. Manor Farm is renamed Animal Farm, and the Seven Commandments of Animalism are painted on the barn wall. Initially, the rebellion is a success: The animals complete the harvest and meet every Sunday to debate farm policy. The pigs, because of their intelligence, become the supervisors of the farm. Napoleon, however, proves to be a power hungry leader who steals the cows' milk and a number of apples to feed himself and the other pigs. He also enlists the services of Squealer, a pig with the ability to persuade the other animals that the pigs are always moral and correct in their decisions. Later that fall, Jones and his men return to Animal Farm and attempt to retake it. Thanks to the tactics of Snowball, the animals defeat Jones in what thereafter becomes known as The Battle of the Cowshed. Winter arrives, and Mollie, a vain horse concerned only with ribbons and sugar, is lured off the farm by another human. Snowball begins drawing plans for a windmill, which will provide electricity and thereby give the animals more leisure time, but Napoleon vehemently opposes such a plan on the grounds that building the windmill will allow them less time for producing food. On the Sunday that the pigs offer the windmill to the animals for a vote, Napoleon summons a pack of ferocious dogs, who chase Snowball off the farm forever. Napoleon announces that there will be no further debates; he also tells them that the windmill will be built after all and lies that it was his own idea, stolen by Snowball. For the rest of the novel, Napoleon uses Snowball as a scapegoat on whom he blames all of the animals' hardships. Much of the next year is spent building the windmill. Boxer, an incredibly strong horse, proves himself to be the most valuable animal in this endeavor. Jones, meanwhile, forsakes the farm and moves to another part of the county. Contrary to the principles of Animalism, Napoleon hires a solicitor and begins trading with neighboring farms. When a storm topples the half finished windmill, Napoleon predictably blames Snowball and orders the animals to begin rebuilding it. Napoleon's lust for power increases to the point where he becomes a totalitarian dictator, forcing "confessions" from innocent animals and having the dogs kill them in front of the entire farm. He and the pigs move into Jones' house and begin sleeping in beds (which Squealer excuses with his brand of twisted logic). The animals receive less and less food, while the pigs grow fatter. After the windmill is completed in August, Napoleon sells a pile of timber to Frederick, a neighboring farmer who pays for it with forged banknotes. Frederick and his men attack the farm and explode the windmill but are eventually defeated. As more of the Seven Commandments of Animalism are broken by the pigs, the language of the Commandments is revised: For example, after the pigs become drunk one night, the Commandment, "No animals shall drink alcohol" is changed to, "No animal shall drink alcohol to excess."Boxer again offers his strength to help build a new windmill, but when he collapses, exhausted, Napoleon sells the devoted horse to a knacker (a glue boiler). Squealer tells the indignant animals that Boxer was actually taken to a veterinarian and died a peaceful death in a hospital - a tale the animals believe. Years pass and Animal Farm expands its boundaries after Napoleon purchases two fields from another neighboring farmer, Pilkington. Life for all the animals (except the pigs) is harsh. Eventually, the pigs begin walking on their hind legs and take on many other qualities of their former human oppressors. The Seven Commandments are reduced to a single law: "All Animals Are Equal / But Some Are More Equal Than Others." The novel ends with Pilkington sharing drinks with the pigs in Jones' house. Napoleon changes the name of the farm back to Manor Farm and quarrels with Pilkington during a card game in which both of them try to play the ace of spades. As other animals watch the scene from outside the window, they cannot tell the pigs from the humans."</p>
-                <div class="col-sm-2"></div>
-                <textarea id="mainInput" class="col-sm-5 text-justify"></textarea>
+            <h3 class="col-sm-5">Please type the text below:</h3>
+            <div class="col-sm-2"></div>
+            <h3 class="col-sm-5">Text to input:</h3>
+            <p class="col-sm-5 text-justify">
+                One night, all the animals at Mr. Jones' Manor Farm assemble in a barn to hear old Major, a pig,
+                describe a dream he had about a world where all animals live free from the tyranny of their human
+                masters. Old Major dies soon after the meeting, but the animals, now inspired by his philosophy of
+                Animalism, plot a rebellion against Jones. Two pigs, Snowball and Napoleon, prove themselves important
+                figures and planners of this dangerous enterprise. When Jones forgets to feed the animals, the
+                revolution occurs, and Jones and his men are chased off the farm. Manor Farm is renamed Animal Farm,
+                and the Seven Commandments of Animalism are painted on the barn wall. Initially, the rebellion is a
+                success: The animals complete the harvest and meet every Sunday to debate farm policy. The pigs,
+                because of their intelligence, become the supervisors of the farm. Napoleon, however, proves to be a
+                power hungry leader who steals the cows' milk and a number of apples to feed himself and the other
+                pigs. He also enlists the services of Squealer, a pig with the ability to persuade the other animals
+                that the pigs are always moral and correct in their decisions. Later that fall, Jones and his men
+                return to Animal Farm and attempt to retake it. Thanks to the tactics of Snowball, the animals defeat
+                Jones in what thereafter becomes known as The Battle of the Cowshed. Winter arrives, and Mollie, a vain
+                horse concerned only with ribbons and sugar, is lured off the farm by another human. Snowball begins
+                drawing plans for a windmill, which will provide electricity and thereby give the animals more leisure
+                time, but Napoleon vehemently opposes such a plan on the grounds that building the windmill will allow
+                them less time for producing food. On the Sunday that the pigs offer the windmill to the animals for a
+                vote, Napoleon summons a pack of ferocious dogs, who chase Snowball off the farm forever. Napoleon
+                announces that there will be no further debates; he also tells them that the windmill will be built
+                after all and lies that it was his own idea, stolen by Snowball. For the rest of the novel, Napoleon
+                uses Snowball as a scapegoat on whom he blames all of the animals' hardships. Much of the next year is
+                spent building the windmill. Boxer, an incredibly strong horse, proves himself to be the most valuable
+                animal in this endeavor. Jones, meanwhile, forsakes the farm and moves to another part of the county.
+                Contrary to the principles of Animalism, Napoleon hires a solicitor and begins trading with neighboring
+                farms. When a storm topples the half finished windmill, Napoleon predictably blames Snowball and orders
+                the animals to begin rebuilding it. Napoleon's lust for power increases to the point where he becomes a
+                totalitarian dictator, forcing "confessions" from innocent animals and having the dogs kill them in
+                front of the entire farm. He and the pigs move into Jones' house and begin sleeping in beds (which
+                Squealer excuses with his brand of twisted logic). The animals receive less and less food, while the
+                pigs grow fatter. After the windmill is completed in August, Napoleon sells a pile of timber to
+                Frederick, a neighboring farmer who pays for it with forged banknotes. Frederick and his men attack the
+                farm and explode the windmill but are eventually defeated. As more of the Seven Commandments of
+                Animalism are broken by the pigs, the language of the Commandments is revised: For example, after the
+                pigs become drunk one night, the Commandment, "No animals shall drink alcohol" is changed to, "No
+                animal shall drink alcohol to excess."Boxer again offers his strength to help build a new windmill, but
+                when he collapses, exhausted, Napoleon sells the devoted horse to a knacker (a glue boiler). Squealer
+                tells the indignant animals that Boxer was actually taken to a veterinarian and died a peaceful death
+                in a hospital - a tale the animals believe. Years pass and Animal Farm expands its boundaries after
+                Napoleon purchases two fields from another neighboring farmer, Pilkington. Life for all the animals
+                (except the pigs) is harsh. Eventually, the pigs begin walking on their hind legs and take on many
+                other qualities of their former human oppressors. The Seven Commandments are reduced to a single law:
+                "All Animals Are Equal / But Some Are More Equal Than Others." The novel ends with Pilkington sharing
+                drinks with the pigs in Jones' house. Napoleon changes the name of the farm back to Manor Farm and
+                quarrels with Pilkington during a card game in which both of them try to play the ace of spades. As
+                other animals watch the scene from outside the window, they cannot tell the pigs from the humans."</p>
+            <div class="col-sm-2"></div>
+            <textarea id="mainInput" placeholder="To begin the test, begin typing here." class="col-sm-5 text-justify"></textarea>
         </div>
         <!-- Text input-->
         <div class="row" style="padding-top:10%">
             <div class="col">
-                
+
             </div>
         </div>
-    
+
 
     </div>
-    
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Sticky Header -->
+    <script>
+        // Sticky Header
+        $(window).scroll(function () {
+
+            if ($(window).scrollTop() > 100) {
+                $('.main_h').addClass('sticky');
+            } else {
+                $('.main_h').removeClass('sticky');
+            }
+        });
+
+        // Mobile Navigation
+        $('.mobile-toggle').click(function () {
+            if ($('.main_h').hasClass('open-nav')) {
+                $('.main_h').removeClass('open-nav');
+            } else {
+                $('.main_h').addClass('open-nav');
+            }
+        });
+
+        $('.main_h li a').click(function () {
+            if ($('.main_h').hasClass('open-nav')) {
+                $('.navigation').removeClass('open-nav');
+                $('.main_h').removeClass('open-nav');
+            }
+        });
+
+        // navigation scroll lijepo radi materem
+        $('nav a').click(function (event) {
+            var id = $(this).attr("href");
+            var offset = 70;
+            var target = $(id).offset().top - offset;
+            $('html, body').animate({
+                scrollTop: target
+            }, 500);
+            event.preventDefault();
+        });
+    </script>
     <!-- Timer script -->
     <script>
         function startTest() {
-            
+
             let testLength = $('#testLength').val() * 60
             let timeRemaining = testLength;
-            setInterval(()=>{
+            setInterval(() => {
 
-                if(timeRemaining > 0) {
+                if (timeRemaining > 0) {
 
                     timeRemaining = timeRemaining - 1;
                     $('#timeRemaining').html('Time Remaining: ' + timeRemaining)
                 }
             }, 1000)
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 $('#mainInput').prop('disabled', true);
                 // TODO: This should pull up the report of results.
@@ -96,10 +308,10 @@
         }
 
         let testRunning = false;
-        $("#mainInput").on("input", function(){
-        
-            
-            if( !testRunning ) {
+        $("#mainInput").on("input", function () {
+
+
+            if (!testRunning) {
 
                 testRunning = true;
                 startTest()
