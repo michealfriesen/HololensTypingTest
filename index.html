@@ -209,16 +209,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <p id="wpmResult">This is where the words per minute will be.</p>
+                            <p id="wpmResult" style="padding-left:3%">This is where the words per minute will be.</p>
                         </div>
                         <div class="row">
-                            <p id="cpmResult">This is where the characters per minute will be.</p>
+                            <p id="cpmResult" style="padding-left:3%">This is where the characters per minute will be.</p>
                         </div>
                         <div class="row">
-                            <p id="mistypedChars">This is where the total mistakes will be.</p>
+                            <p id="mistypedChars" style="padding-left:3%">This is where the total mistakes will be.</p>
                         </div>
                         <div class="row">
-                            <p id="accuracyPercentage">This is where the accuracy percentage will be.</p>
+                            <p id="accuracyPercentage" style="padding-left:3%">This is where the accuracy percentage will be.</p>
                         </div>
                                 
                     </div>
@@ -284,11 +284,13 @@
         //TODO: Add accuracy analysis.
         function analyze(target, input, testTime) {
 
+            let targetVal = $(target).text()
+            let inputVal = $(input).val()
             let result = {}
-            result.cpm = $(input).val().length / testTime
+            result.cpm = inputVal.length / testTime
             result.wpm = result.cpm / 5
-            result.mistakes = accuracy(target.substring(0, input.length - 1), input)
-            result.accuracyPercent = (result.mistakes / input.length) * 100
+            result.mistakes = accuracy(targetVal.substring(0, inputVal.length - 1), inputVal)
+            result.accuracyPercent = ((result.mistakes / inputVal.length) * 100).toFixed(4)
 
             return (result)
         }
