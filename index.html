@@ -114,7 +114,7 @@
 
 <body>
 
-    <header class="main_h">
+    <header class="main_h sticky">
 
         <div class="row">
             <div class="col-sm-3">
@@ -143,8 +143,8 @@
         <!-- Header -->
         <div class="row">
             <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <h1 class="text-center">Typing Test</h1>
+            <div class="col-sm-6" style="height:8%">
+                
             </div>
         </div>
 
@@ -208,7 +208,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        This is where all the results will be stored.
+                        <div class="row">
+                            <p id="wpmResult">This is where the words per minute will be.</p>
+                        </div>
+                        <div class="row">
+                            <p id="cpmResult">This is where the characters per minute will be.</p>
+                        </div>
+                        <div class="row">
+                            <p id="mistypedChars">This is where the total mistakes will be.</p>
+                        </div>
+                        <div class="row">
+                            <p id="accuracyPercentage">This is where the accuracy percentage will be.</p>
+                        </div>
+                                
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Complete Test</button>
@@ -226,56 +238,59 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <!-- Sticky Header -->
+
+    <!-- Accuracy Function using Levenshtein Distance-->
     <script>
-        // Sticky Header
-        $(window).scroll(function () {
 
-            if ($(window).scrollTop() > 0) {
-                $('.main_h').addClass('sticky');
+        // Compute the edit distance between the two given strings
+        function accuracy(a, b) {
+        if(a.length == 0) return b.length; 
+        if(b.length == 0) return a.length; 
+
+        var matrix = [];
+
+        // increment along the first column of each row
+        var i;
+        for(i = 0; i <= b.length; i++){
+            matrix[i] = [i];
+        }
+
+        // increment each column in the first row
+        var j;
+        for(j = 0; j <= a.length; j++){
+            matrix[0][j] = j;
+        }
+
+        // Fill in the rest of the matrix
+        for(i = 1; i <= b.length; i++){
+            for(j = 1; j <= a.length; j++){
+            if(b.charAt(i-1) == a.charAt(j-1)){
+                matrix[i][j] = matrix[i-1][j-1];
             } else {
-                $('.main_h').removeClass('sticky');
+                matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
+                    Math.min(matrix[i][j-1] + 1, // insertion
+                            matrix[i-1][j] + 1)); // deletion
             }
-        });
-
-        // Mobile Navigation
-        $('.mobile-toggle').click(function () {
-            if ($('.main_h').hasClass('open-nav')) {
-                $('.main_h').removeClass('open-nav');
-            } else {
-                $('.main_h').addClass('open-nav');
             }
-        });
+        }
 
-        $('.main_h li a').click(function () {
-            if ($('.main_h').hasClass('open-nav')) {
-                $('.navigation').removeClass('open-nav');
-                $('.main_h').removeClass('open-nav');
-            }
-        });
-
-        // navigation scroll lijepo radi materem
-        $('nav a').click(function (event) {
-            var id = $(this).attr("href");
-            var offset = 70;
-            var target = $(id).offset().top - offset;
-            $('html, body').animate({
-                scrollTop: target
-            }, 500);
-            event.preventDefault();
-        });
+  return matrix[b.length][a.length];
+};
+    
     </script>
-
 
     <!-- Test logic -->
     <script>
         //TODO: Add accuracy analysis.
-        function analyze(text) {
+        function analyze(target, input, testTime) {
 
             let result = {}
-            result.wpm = $(text).val().length / 5
+            result.cpm = $(input).val().length / testTime
+            result.wpm = result.cpm / 5
+            result.mistakes = accuracy(target.substring(0, input.length - 1), input)
+            result.accuracyPercent = (result.mistakes / input.length) * 100
 
-            return (wpm)
+            return (result)
         }
 
         function startTest() {
@@ -294,9 +309,12 @@
 
                 $('#mainInput').prop('disabled', true);
 
+                let results = analyze('#mainText','#mainInput', testLength / 60);
+                $('#wpmResult').text("WPM (Words per minute): " + results.wpm);
+                $('#cpmResult').text("CPM (Characters per minute): " + results.cpm);
+                $('#mistypedChars').text("Mistyped Characters: " + results.mistakes);
+                $('#accuracyPercentage').text("% Accuracy: " + results.accuracyPercent + "%" )
                 $('#resultsModal').modal('show');
-                let results = analyze('#mainInput');
-                $('#wpmResult').val(results.wpm);
             }, testLength * 1000)
         }
 
