@@ -290,7 +290,7 @@
             result.cpm = inputVal.length / testTime
             result.wpm = result.cpm / 5
             result.mistakes = accuracy(targetVal.substring(0, inputVal.length - 1), inputVal)
-            result.accuracyPercent = ((result.mistakes / inputVal.length) * 100).toFixed(4)
+            result.accuracyPercent = 100 - ((result.mistakes / inputVal.length) * 100).toFixed(4)
 
             return (result)
         }
