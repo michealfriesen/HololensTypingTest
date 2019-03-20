@@ -182,12 +182,12 @@
 
         <!-- Text to Write-->
         <div class="row" style="padding-top:5%">
-            <h3 class="col-sm-5">Please type the text below:</h3>
+            <h3 class="col-sm-6">Please type the text below:</h3>
             <div class="col-sm-1"></div>
             <h3 class="col-sm-5">Text to input:</h3>
-            <p id="mainText" class="col-sm-5 text-justify">Please select a text source.</p>
+            <p id="mainText" class="col-sm-6 text-center">Please select a text source.</p>
             <div class="col-sm-1"></div>
-            <textarea id="mainInput" placeholder="To begin the test, begin typing here." class="col-sm-5 text-justify"></textarea>
+            <textarea id="mainInput" placeholder="To begin the test, begin typing here." class="col-sm-5 text-center"></textarea>
         </div>
 
         <div class="row" style="padding-top:10%">
@@ -316,7 +316,6 @@
                 $('#cpmResult').text("CPM (Characters per minute): " + results.cpm);
                 $('#mistypedChars').text("Mistyped Characters: " + results.mistakes);
                 $('#accuracyPercentage').text("% Accuracy: " + results.accuracyPercent + "%" );
-                $('#resultsView').toggle();
                 $('#resultsModal').modal('show');
             }, testLength * 1000)
         }
