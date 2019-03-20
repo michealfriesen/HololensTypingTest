@@ -180,6 +180,12 @@
             </div>
         </div>
 
+        <div class="row" style="padding-top:3%">
+            <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="resultsView" style="margin-bottom:3%; display: none;" onclick="showResults()">View Results</button>
+            </div>
+        </div>
+
         <!-- Text to Write-->
         <div class="row" style="padding-top:5%">
             <h3 class="col-sm-6">Please type the text below:</h3>
@@ -190,11 +196,7 @@
             <textarea id="mainInput" placeholder="To begin the test, begin typing here." class="col-sm-5 text-center"></textarea>
         </div>
 
-        <div class="row" style="padding-top:10%">
-            <div class="col-sm-12">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="resultsView" style="margin-bottom:5%; display: none;" onclick="showResults()">View Results</button>
-            </div>
-        </div>
+        
 
         <!-- Modal -->
         <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -317,6 +319,7 @@
                 $('#mistypedChars').text("Mistyped Characters: " + results.mistakes);
                 $('#accuracyPercentage').text("% Accuracy: " + results.accuracyPercent + "%" );
                 $('#resultsModal').modal('show');
+                $('#resultsView').toggle();
             }, testLength * 1000)
         }
 
